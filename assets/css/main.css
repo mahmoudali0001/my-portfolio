@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --y: --y;
+  }
+}
+
+@layer components {
+  .link-item {
+    @apply text-gray-600 ease-in-out duration-300 py-4 px-1 relative lg:right-0 right-[-250px] hover:text-black;
+    @apply hover:text-black lg:hover:before:w-full;
+    @apply lg:before:absolute lg:before:w-0 lg:before:h-0.5 lg:before:ease-in-out lg:before:duration-300 lg:before:left-0 lg:before:bottom-0 lg:before:origin-top-left lg:before:bg-main;
+    @apply dark:text-gray-100 dark:hover:text-white;
+  }
+
+  .link-item.active {
+    @apply text-black font-bold dark:text-main  before:w-full;
+  }
+
+  .open-menu {
+    @apply md:w-[40%] w-[50%];
+  }
+
+  .btn-open {
+    @apply md:-left-[32%] -left-[38%];
+  }
+
+  .span-open-1 {
+    @apply w-1/2 absolute top-[11px] right-[-1px] rotate-[44deg];
+  }
+
+  .span-open-2 {
+    @apply w-1/2 absolute bottom-[11px] right-[-1px] rotate-[-44deg];
+  }
+
+  .mmm {
+    @apply left-0;
+  }
+
+  .ffff {
+    @apply left-[250px];
+  }
+
+  .skill {
+    @apply w-40 h-40 relative;
+  }
+
+  .conact-us-input {
+    @apply bg-transparent border border-t-0 border-l-0 border-r-0 border-b-[1px] w-full inline-block border-gray-300 focus-visible:outline-0;
+  }
+
+  .input-name {
+    @apply peer-focus-visible:top-[-15px] peer-focus-visible:text-[10px];
+  }
+
+  .input-parent {
+    @apply relative w-full;
+  }
+
+  .underline {
+    @apply w-full relative bottom-0 before:absolute before:h-[1px] before:w-0 before:duration-700 before:bottom-0 before:left-0 before:bg-lime-500 before:z-30 peer-focus-visible:before:w-full;
+  }
+
+  .input-parent span {
+    @apply text-gray-500 duration-300 top-0 dark:text-gray-300 absolute left-0 text-sm;
+  }
+
+  .input-parent span.active {
+    @apply text-[10px] top-[-15px];
+  }
+
+  .shuffle-btn {
+    @apply text-gray-600 ease-in-out duration-300 py-2 px-1 relative  hover:text-black cursor-pointer;
+    @apply hover:text-black hover:before:w-full;
+    @apply before:absolute before:w-0 before:h-0.5 before:ease-in-out before:duration-300 before:left-0 before:bottom-0 before:origin-top-left before:bg-main;
+    @apply dark:text-gray-100 dark:hover:text-white;
+  }
+
+  .shuffle-btn.active {
+    @apply text-black font-bold dark:text-main  before:w-full;
+  }
+
+  .pagation-btn.active {
+    @apply border border-cyan-700 text-white bg-cyan-700;
+  }
+
+  .overlay-blue {
+    @apply before:absolute before:top-0 before:left-0 before:bg-[#1930ff62] before:w-full before:duration-500 before:ease-in-out before:h-full before:z-10;
+  }
+  .overlay-dark-blue {
+    @apply before:absolute before:top-0 before:left-0 before:bg-[#1596ff62] before:w-full before:duration-500 before:ease-in-out before:h-full before:z-10;
+  }
+
+  .project-screen-btn.active {
+    @apply bg-darkColor2;
+  }
+
+  .projects-links-btn {
+    @apply py-2 px-4 text-white md:text-lg text-base rounded  cursor-pointer duration-300;
+  }
+
+  .popUpBtnsHover {
+    @apply relative before:absolute before:bg-darkColor2 before:w-0 before:h-full before:top-0 before:left-0 before:z-0 before:duration-700 hover:before:w-full before:opacity-90;
+  }
+}
+
+@layer utilities {
+  /* width */
+  ::-webkit-scrollbar,
+  .dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /* border-radius: 100vh; */
+    background: #fff;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border: 2px solid #fff;
+  }
+
+  /* Track */
+  .dark ::-webkit-scrollbar-track {
+    background: #374151;
+  }
+
+  /* Handle */
+  .dark ::-webkit-scrollbar-thumb {
+    background: #6b7280;
+    border: 2px solid #374151;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+  .test-bg {
+    background: linear-gradient(
+        45deg,
+        rgba(255, 28, 8, 0.8) 0%,
+        rgba(255, 0, 82, 0.8) 100%
+      ),
+      url("../img/branding.webp");
+    background-size: cover;
+  }
+
+  circle {
+    stroke-dasharray: 472;
+    stroke-dashoffset: 472;
+  }
+
+  .circle-html-skill {
+    animation: anim-html 2s linear forwards;
+  }
+
+  .circle-css-skill {
+    animation: anim-css 2s linear forwards;
+  }
+
+  .circle-js-skill {
+    animation: anim-js 2s linear forwards;
+  }
+
+  .circle-bootstrap-skill {
+    animation: anim-bootstrap 2s linear forwards;
+  }
+
+  .circle-tailwind-skill {
+    animation: anim-tailwind 2s linear forwards;
+  }
+
+  .circle-react-skill {
+    animation: anim-react 2s linear forwards;
+  }
+
+  @keyframes anim-html {
+    100% {
+      stroke-dashoffset: 70;
+    }
+  }
+
+  @keyframes anim-css {
+    100% {
+      stroke-dashoffset: 90;
+    }
+  }
+
+  @keyframes anim-js {
+    100% {
+      stroke-dashoffset: 105;
+    }
+  }
+
+  @keyframes anim-bootstrap {
+    100% {
+      stroke-dashoffset: 125;
+    }
+  }
+
+  @keyframes anim-tailwind {
+    100% {
+      stroke-dashoffset: 112;
+    }
+  }
+
+  @keyframes anim-react {
+    100% {
+      stroke-dashoffset: 236;
+    }
+  }
+}
