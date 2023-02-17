@@ -181,8 +181,8 @@ const projectData = [
     pCategory: "Web App",
     pCover: "./assets/img/projects-img/Covers/typing-speed-test-game-cover.PNG",
     pImgPc: "./assets/img/projects-img/pc/typing-speed-test-game-cover.PNG",
-    pImgTablet: "not available",
-    pImgMobile: "not available",
+    pImgTablet: "./assets/img/404.png",
+    pImgMobile: "./assets/img/404.png",
   },
   {
     pName: "Rock Paper Scissor Game",
@@ -213,38 +213,38 @@ const projectData = [
   {
     pName: "Responsive Designs Practice",
     pClient: "No One",
-    pGitHubLink: "not available",
+    pGitHubLink: "./assets/img/404.png",
     pDemoLink: "https://codepen.io/mahmoud-ali-the-encoder/pen/WNdybEL",
     pTools: ["Html5", "Css3"],
     pCategory: "challenge",
     pCover: "./assets/img/projects-img/Covers/Responsive Designs-cover.PNG",
     pImgPc: "./assets/img/projects-img/Covers/Responsive Designs-cover.PNG",
-    pImgTablet: "not available",
-    pImgMobile: "not available",
+    pImgTablet: "./assets/img/404.png",
+    pImgMobile: "./assets/img/404.png",
   },
   {
     pName: "Animation  Chanllenge el zero",
     pClient: "No One",
-    pGitHubLink: "not available",
+    pGitHubLink: "./assets/img/404.png",
     pDemoLink: "https://codepen.io/mahmoud-ali-the-encoder/pen/yLpKGpY",
     pTools: ["Html5", "Css3"],
     pCategory: "challenge",
     pCover: "./assets/img/projects-img/Covers/Animation  Chanllenge-cover.PNG",
     pImgPc: "./assets/img/projects-img/Covers/Animation  Chanllenge-cover.PNG",
-    pImgTablet: "not available",
-    pImgMobile: "not available",
+    pImgTablet: "./assets/img/404.png",
+    pImgMobile: "./assets/img/404.png",
   },
   {
     pName: "Spiner up and down",
     pClient: "No One",
-    pGitHubLink: "not available",
+    pGitHubLink: "./assets/img/404.png",
     pDemoLink: "https://codepen.io/mahmoud-ali-the-encoder/pen/gOoejeG",
     pTools: ["Html5", "Css3"],
     pCategory: "challenge",
     pCover: "./assets/img/projects-img/Covers/Spiner up and down-cover.png",
     pImgPc: "./assets/img/projects-img/Covers/Spiner up and down-cover.png",
-    pImgTablet: "not available",
-    pImgMobile: "not available",
+    pImgTablet: "./assets/img/404.png",
+    pImgMobile: "./assets/img/404.png",
   },
   {
     pName: "Todo list",
@@ -255,8 +255,8 @@ const projectData = [
     pCategory: "challenge",
     pCover: "./assets/img/projects-img/Covers/Todo-list-cover.png",
     pImgPc: "./assets/img/projects-img/Covers/Todo-list-cover.png",
-    pImgTablet: "not available",
-    pImgMobile: "not available",
+    pImgTablet: "./assets/img/404.png",
+    pImgMobile: "./assets/img/404.png",
   },
   {
     pName: "Simple Articles Editor",
@@ -271,8 +271,8 @@ const projectData = [
       "./assets/img/projects-img/Covers/Simple-Articles-Editor-Challenge-cover.PNG",
     pImgPc:
       "./assets/img/projects-img/Covers/Simple-Articles-Editor-Challenge-cover.PNG",
-    pImgTablet: "not available",
-    pImgMobile: "not available",
+    pImgTablet: "./assets/img/404.png",
+    pImgMobile: "./assets/img/404.png",
   },
 ];
 
@@ -448,8 +448,9 @@ function removeActive(targetBtn, wrapper) {
 
 shuffleBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    removeActive(e.target, shuffleBtns);
-    switch (e.target.dataset.cat) {
+    e.stopPropagation();
+    removeActive(btn, shuffleBtns);
+    switch (btn.dataset.cat) {
       case "Website":
         newArrayOfProjects = [];
 
@@ -628,41 +629,24 @@ function loadItem(arrayOfData) {
 
   document.querySelectorAll(".view-projects").forEach((btn) => {
     btn.addEventListener("click", (e) => {
+      e.stopPropagation();
       projectImg.setAttribute("src", "");
-      if (e.target.nodeName == "I" || e.target.nodeName == "SPAN") {
-        projectImg.setAttribute(
-          "src",
-          newArrayOfProjects[e.target.parentElement.dataset.img].pImgPc
-        );
-
-        liveBtn.setAttribute(
-          "href",
-          newArrayOfProjects[e.target.parentElement.dataset.img].pDemoLink
-        );
-        githubBtn.setAttribute(
-          "href",
-          newArrayOfProjects[e.target.parentElement.dataset.img].pGitHubLink
-        );
-      } else if (e.target.nodeName == "DIV") {
-        projectImg.setAttribute(
-          "src",
-          newArrayOfProjects[e.target.dataset.img].pImgPc
-        );
-
-        liveBtn.setAttribute(
-          "href",
-          newArrayOfProjects[e.target.parentElement.dataset.img].pDemoLink
-        );
-        githubBtn.setAttribute(
-          "href",
-          newArrayOfProjects[e.target.parentElement.dataset.img].pGitHubLink
-        );
-      }
-
+      projectImg.setAttribute(
+        "src",
+        newArrayOfProjects[btn.dataset.img].pImgPc
+      );
+      liveBtn.setAttribute(
+        "href",
+        newArrayOfProjects[btn.dataset.img].pDemoLink
+      );
+      githubBtn.setAttribute(
+        "href",
+        newArrayOfProjects[btn.dataset.img].pGitHubLink
+      );
       projectScreensBtns[0].classList.add("active");
       projectScreensBtns[1].classList.remove("active");
       projectScreensBtns[2].classList.remove("active");
-      changeProjectImg(e.target);
+      changeProjectImg(btn);
       projectsPopUp.classList.add("scale-100");
       projectsPopUp.classList.add("flex");
     });
@@ -787,42 +771,38 @@ function loadPageNav(arraOfData) {
 function changeProjectImg(imgSrc) {
   projectScreensBtns.forEach((el) => {
     el.addEventListener("click", (e) => {
-      if (e.target.nodeName == "I" || e.target.nodeName == "SPAN") {
-        removeActiveFromProjectsBtns(e.target.parentElement);
-      } else {
-        removeActiveFromProjectsBtns(e.target);
-      }
-      if (
-        e.target.parentElement.id == "largeScreen" ||
-        e.target.id == "largeScreen"
-      ) {
+      e.stopPropagation();
+      removeActiveFromProjectsBtns(el);
+      removeActiveFromProjectsBtns(el);
+      console.log(el);
+      if (el.id == "largeScreen") {
         projectImg.setAttribute("src", "");
         projectImg.setAttribute(
           "src",
-          newArrayOfProjects[imgSrc.parentElement.dataset.img].pImgPc
+          newArrayOfProjects[imgSrc.dataset.img].pImgPc
         );
-      } else if (
-        e.target.parentElement.id === "mediumScreen" ||
-        e.target.id === "mediumScreen"
-      ) {
+      } else if (el.id == "mediumScreen") {
         projectImg.setAttribute("src", "");
         projectImg.setAttribute(
           "src",
-          newArrayOfProjects[imgSrc.parentElement.dataset.img].pImgTablet
+          newArrayOfProjects[imgSrc.dataset.img].pImgTablet
         );
-      } else if (
-        e.target.parentElement.id === "smallScreen" ||
-        e.target.id === "smallScreen"
-      ) {
+      } else if (el.id == "smallScreen") {
         projectImg.setAttribute("src", "");
         projectImg.setAttribute(
           "src",
-          newArrayOfProjects[imgSrc.parentElement.dataset.img].pImgMobile
+          newArrayOfProjects[imgSrc.dataset.img].pImgMobile
         );
       }
     });
   });
 }
+
+/*
+  if (el.id == "not available") {
+    console.log("here");
+  }
+*/
 
 projectCloseBtn.addEventListener("click", () => {
   projectsPopUp.classList.remove("duration-1000");
