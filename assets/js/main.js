@@ -337,6 +337,19 @@ window.onload = () => {
   triangle.style.strokeDashoffset = "0";
 };
 
+parentDarkModeBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  darkModeBtn.classList.remove("right-[-75px]");
+  darkModeBtn.classList.add("right-0");
+});
+
+document.body.addEventListener("click", (e) => {
+  if (e.target.id != "darkModeBtn" && e.target.id != "parentDarkModeBtn") {
+    darkModeBtn.classList.remove("right-0");
+    darkModeBtn.classList.add("right-[-75px]");
+  }
+});
+
 darkModeBtn.addEventListener("click", () => {
   darkBtnIcon.classList.toggle("translate-x-9");
   darkBtnIcon.classList.toggle("rotate-[270deg]");

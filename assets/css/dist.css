@@ -1260,6 +1260,10 @@ video {
   width: 12rem;
 }
 
+.w-16 {
+  width: 4rem;
+}
+
 .max-w-\[95\%\] {
   max-width: 95%;
 }
@@ -2603,6 +2607,10 @@ circle {
 
   .md\:w-full {
     width: 100%;
+  }
+
+  .md\:w-24 {
+    width: 6rem;
   }
 
   .md\:grid-cols-3 {
