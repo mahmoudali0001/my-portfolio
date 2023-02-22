@@ -23,9 +23,19 @@
   </head>
   <body class="box-border overflow-x-hidden dark" id="body">
   <!------------------------------------------------------------ Start Fixed Buttons ------------------------------------------------------>
+  <div class="bg-white dark:bg-darkColor2 fixed w-full h-full top-0 left-0 z-[60] flex justify-center items-center" id="loadingPage">
+    <div class="loader">
+      <div class="loader__bar bg-cyan-400"></div>
+      <div class="loader__bar bg-cyan-400"></div>
+      <div class="loader__bar bg-cyan-400"></div>
+      <div class="loader__bar bg-cyan-400"></div>
+      <div class="loader__bar bg-cyan-400"></div>
+      <div class="loader__ball dark:bg-white bg-darkColor2"></div>
+    </div>
+  </div>
     <div class="fixed right-0 top-1/2 -translate-y-1/2 z-50 md:w-24 w-16 h-24 group" id="parentDarkModeBtn">
       <i class="fa-solid fa-angles-left float-right dark:text-white text-[#333] mr-2 animate-pulse" id="animateDarkModeBtn"></i>
-      <div class="absolute right-0 duration-700 top-1/2 -translate-y-1/2 z-50 dark:bg-[#333] bg-white w-24 h-12 flex items-center rounded-full p-2 rotate-90 dark:shadow-darkSkillOuter shadow-skillInner" id="darkModeBtn">
+      <div class="absolute group-hover:right-0 right-0 duration-700 top-1/2 -translate-y-1/2 z-50 dark:bg-[#333] bg-white w-24 h-12 flex items-center rounded-full p-2 rotate-90 dark:shadow-darkSkillOuter shadow-skillInner" id="darkModeBtn">
         <i class="fa-regular fa-sun text-2xl text-[#ffde59] dark:bg-darkColor1 bg-[#eee] rounded-full w-10 h-10 flex items-center justify-center duration-700" id="darkBtnIcon"></i>
       </div>
     </div>
@@ -193,7 +203,7 @@
     <!--------------------------------------------------------------- End NavBar --------------------------------------------------------->
 
     <!---------------------------------------------------------------- Start Header  ------------------------------------------------>
-    <section class="pt-20  dark:bg-darkColor3" id="Home">
+    <section class="pt-20  dark:bg-darkColor3 section" id="Home">
       <article
         class="
           container
@@ -231,14 +241,14 @@
           <polygon points="50 15, 100 100, 0 100"/>
         </svg>
 
-        <img src="./assets/img/me.png" alt="" class="lg:max-h-[500px] md:max-h-[400px] saturate-150 dark:grayscale max-h-[350px]" data-aos="fade-up" data-aos-duration="1000">
+        <img src="./assets/img/me.png" alt="" class="lg:max-h-[500px] md:max-h-[400px] saturate-150 dark:grayscale max-h-[350px]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">
       </div>
       </article>
     </section>
     <!---------------------------------------------------------------- End Header  ------------------------------------------------>
 
     <!---------------------------------------------------------------- Start  About Me ----------------------------------------------------->
-    <section class="relative dark:bg-darkColor2 dark:text-white bg-gray-50" id="aboutMe">
+    <section class="relative dark:bg-darkColor2 dark:text-white bg-gray-50 section" id="aboutMe">
       <article class="container m-auto px-2 py-20" data-aos="zoom-in">
         <h2 class="text-4xl font-medium mb-8 text-center text-main">About Me</h1>
         <p class="w-3/4  m-auto text-base text-center">I'm a front-end web developer. I specialize in creating websites and applications with modern technologies to ensure maximum user engagement, from conceptualization all the way through deployment. Working on complex problems has been my passion since starting out as a freelance Web Developer one year ago, and today I use everything from HTML5 & CSS3 to JavaScript frameworks like React for powerful yet interactive sites. In addition, testing browser compatibility along with accessibility rigging are some of the other aspects included in my work repertoire. Regardless of what coding language or technology is involved throughout any project, making sure that users have an enjoyable experience when using online products will always be at the core focus of whatever task lies ahead.</p>
@@ -332,7 +342,7 @@
     <!---------------------------------------------------------------- End  About Me ------------------------------------------------------->
   
     <!---------------------------------------------------------------- Start Skills ------------------------------------------------------->
-    <section class="dark:bg-darkColor3 dark:text-white" id="skills">
+    <section class="dark:bg-darkColor3 dark:text-white section" id="skills">
 
       <article class="container m-auto px-2 py-20"> 
         <h2 class="text-4xl font-medium mb-8 text-center text-main">My Skills</h1>
@@ -497,20 +507,20 @@
     <!---------------------------------------------------------------- End Skills ------------------------------------------------------->
 
     <!---------------------------------------------------------------- Start Service ------------------------------------------------------>
-    <section class="dark:bg-darkColor2 dark:text-white bg-gray-50 relative" id="service">
+    <section class="dark:bg-darkColor2 dark:text-white bg-gray-50 relative section" id="service">
       <article class="container m-auto px-2 py-20">
 
         <h2 class="text-4xl font-medium mb-8 text-center text-main">My Service</h2>
 
         <article class="grid lg:grid-cols-3 md:grid-cols-2 gap-4 grid-cols-1">
-          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323] card" data-aos="zoom-in">
+          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323] card" data-aos="flip-right">
             <i class="fa-solid fa-laptop text-4xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"></i>
             <h3 class="font-normal text-2xl">Web Design</h3>
 
             <p class="text-center text-gray-500 dark:text-gray-200 text-sm">professional approach to web design and development, you will obtain a perfect UI/UX achieved via responsive layouts. Your resulting web deliverables will be both good-looking and adaptable to any browser, dimension, device, etc.</p>
           </div>
 
-          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323] group test-bg "data-aos="zoom-in">
+          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323] group test-bg "data-aos="flip-right">
             <i class="fa-solid fa-earth-asia text-4xl text-white group-hover:rotate-[360deg] ease-in-out duration-700"></i>
 
             <h3 class="font-normal text-2xl text-white">Branding</h3>
@@ -519,7 +529,7 @@
 
           </div>
 
-          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323]" data-aos="zoom-in">
+          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323]" data-aos="flip-right">
             <i class="fa-solid fa-code text-4xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"></i>
 
             <h3 class="font-normal text-2xl">Development</h3>
@@ -528,7 +538,7 @@
 
           </div>
 
-          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323]" data-aos="zoom-in">
+          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323]" data-aos="flip-right">
             <i class="fa-regular fa-gem text-4xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"></i>
 
             <h3 class="font-normal text-2xl">Creative Design</h3>
@@ -537,7 +547,7 @@
 
           </div>
 
-          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323]"  data-aos="zoom-in">
+          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323]"  data-aos="flip-right">
             <i class="fa-solid fa-desktop text-4xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"></i>
 
             <h3 class="font-normal text-2xl">Fully Responsive</h3>
@@ -546,7 +556,7 @@
 
           </div>
 
-          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323]" data-aos="zoom-in">
+          <div class="flex flex-col gap-4 items-center shadow-xl p-5 bg-white dark:bg-[#232323]" data-aos="flip-right">
             <i class="fa-solid fa-gears text-4xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"></i>
 
             <h3 class="font-normal text-2xl">Technical Support</h3>
@@ -561,7 +571,7 @@
 
     <!---------------------------------------------------------------- Start Projects ----------------------------------------------------->
 
-    <section class="dark:bg-darkColor3 dark:text-white" id="projects">
+    <section class="dark:bg-darkColor3 dark:text-white section" id="projects">
       <article class="container m-auto px-2 py-20">
         <h2 class="text-4xl font-medium mb-8 text-center text-main">My Projects</h2>
 
@@ -619,14 +629,14 @@
     <!---------------------------------------------------------------- End Projects ----------------------------------------------------->
 
     <!----------------------------------------------------------------- Start Concat Us -------------------------------------------------->
-    <section class="dark:bg-darkColor2 dark:text-white bg-gray-50" id="contactUs">
+    <section class="dark:bg-darkColor2 dark:text-white bg-gray-50 section" id="contactUs">
       <div class="container m-auto py-10">
         <div class="flex m-auto flex-col md:flex-row gap-x-8 gap-y-12 bg-white dark:bg-[#232323] shadow-2xl h-full pt-16 relative">
           
           <div class="flex flex-col gap-5 md:pl-32 p-16  md:w-1/2 w-full z-10 md:order-1 order-2">
             <h3 class="font-bold text-3xl leading-[2px]">Contact Us</h3>
             <p class="text-[12px] text-gray-500 dark:text-gray-300">Feel Free To Contact us any time, We will get<br>back to you as soon as we can!</p>
-            <form action="https://formsubmit.co/208436056753aae42b1a9bb3834f218e" method="POST"class="flex flex-col gap-y-5 relative" id="contactForm">
+            <form action="https://formcarry.com/s/559KEOvT7n" method="POST" accept-charset="UTF-8" class="flex flex-col gap-y-5 relative" id="contactForm">
               <div class="input-parent">
                 <input type="text" class="conact-us-input relative peer z-20" name="name"  id="userName"/>
                 <span class="input-name">Name</span>

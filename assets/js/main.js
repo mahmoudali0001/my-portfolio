@@ -1,6 +1,8 @@
 // ---------------------------------------------------------- Start Catching Elements ---------------------------------- //
 let navbarBtn = document.querySelector("#menu-btn");
 
+console.log(email.value);
+
 let navbarBtnSpan = document.querySelectorAll("#menu-btn span");
 
 let navbarMenuOverlay = document.querySelector("#overlay");
@@ -26,14 +28,46 @@ let shuffleBtns = document.querySelectorAll(".shuffle-btn");
 let projectScreensBtns = document.querySelectorAll(".project-screen-btn");
 
 let fromUnderLine = document.querySelectorAll(".underline");
+
+let allSections = document.querySelectorAll(".section");
 // ---------------------------------------------------------- End Catching Elements ---------------------------------- //
 
 let pageIndex = 0;
 let itemPerPage = 6;
 // ------------------------------------------------------------ Start navbar click listener ------------------------------ //
+
+window.addEventListener("scroll", function () {
+  if (allSections[1].offsetTop <= window.pageYOffset + 10) {
+    removeActive(navbarLinks[1], navbarLinks);
+  }
+  if (allSections[2].offsetTop <= window.pageYOffset + 80) {
+    removeActive(navbarLinks[2], navbarLinks);
+  }
+  if (allSections[3].offsetTop <= window.pageYOffset + 80) {
+    removeActive(navbarLinks[3], navbarLinks);
+  }
+  if (allSections[4].offsetTop <= window.pageYOffset + 80) {
+    removeActive(navbarLinks[4], navbarLinks);
+  }
+  if (allSections[5].offsetTop <= window.pageYOffset + 80) {
+    removeActive(navbarLinks[5], navbarLinks);
+  }
+  if (window.pageYOffset == 0) {
+    removeActive(navbarLinks[0], navbarLinks);
+  }
+});
+
 navbarBtn.addEventListener("click", openNavBarMenuAndClosed);
 
 navbarMenuOverlay.addEventListener("click", openNavBarMenuAndClosed);
+
+navbarLinks.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    removeActive(btn, navbarLinks);
+    console.log(btn.childNodes[1].getAttribute("href").slice(1));
+  });
+});
 
 function manageScreenWidth(x) {
   if (x.matches) {
@@ -282,10 +316,7 @@ let newArrayOfProjects = projectData.map((el) => {
 
 function handleNavBarBgOnScroll() {
   window.addEventListener("scroll", function () {
-    if (aboutMe.offsetTop <= window.pageYOffset + 70) {
-      svg1.style.strokeDashoffset = "0";
-      svg2.style.strokeDashoffset = "0";
-    } else {
+    if (aboutMe.offsetTop <= window.pageYOffset + 270) {
       svg1.style.strokeDashoffset = "0";
       svg2.style.strokeDashoffset = "0";
     }
@@ -327,14 +358,16 @@ downloadClick.addEventListener("click", function () {
 
 window.onload = () => {
   setTimeout(() => {
+    loadingPage.remove();
+  }, 2900);
+  setTimeout(() => {
     overlayLogo.classList.remove("left-0");
     overlayLogo.classList.add("ffff");
-  }, 600);
+    triangle.style.strokeDashoffset = "0";
+  }, 3100);
   setTimeout(() => {
     overlayLogo.remove();
-  }, 2500);
-
-  triangle.style.strokeDashoffset = "0";
+  }, 3120);
 };
 
 parentDarkModeBtn.addEventListener("click", (e) => {
@@ -377,7 +410,7 @@ function darkModeToggle() {
 setTimeout(() => {
   darkModeBtn.classList.remove("right-0");
   darkModeBtn.classList.add("right-[-75px]");
-}, 3000);
+}, 5000);
 
 darkModeToggle();
 
@@ -438,23 +471,10 @@ function startCount(el) {
   }, 20);
 }
 
-for (let i = 0; i < input.length; i++) {
-  input[i].addEventListener("blur", () => {
-    if (input[i].value !== "") {
-      inputPlaceHolder[i].classList.add("active");
-      fromUnderLine[i].classList.add("before:w-full");
-    } else {
-      inputPlaceHolder[i].classList.remove("active");
-      fromUnderLine[i].classList.remove("before:w-full");
-    }
-  });
-}
-
 // ------------------------------------------------------------------- Start shuffle ------------------------------------------------//
 function removeActive(targetBtn, wrapper) {
   wrapper.forEach((btn) => {
     btn.classList.remove("active");
-
     targetBtn.classList.add("active");
   });
 }
@@ -562,13 +582,35 @@ function loadItem(arrayOfData) {
     githubBtn.style.setProperty("--m", m + "px");
   };
 
+  for (let i = 0; i < input.length; i++) {
+    vaildInput(i);
+  }
+
+  for (let i = 0; i < input.length; i++) {
+    input[i].addEventListener("blur", () => {
+      vaildInput(i);
+    });
+  }
+
+  function vaildInput(i) {
+    if (input[i].value !== "") {
+      console.log("not empty");
+      inputPlaceHolder[i].classList.add("active");
+      fromUnderLine[i].classList.add("before:w-full");
+    } else {
+      console.log("empty");
+      inputPlaceHolder[i].classList.remove("active");
+      fromUnderLine[i].classList.remove("before:w-full");
+    }
+  }
+
   contactForm.onsubmit = function () {
     let nameVaild = false;
     let numberVaild = false;
     let mailVaild = false;
     let messageVaild = false;
 
-    if (/\w+ \w+/gi.test(userName.value)) {
+    if (/\w+/gi.test(userName.value)) {
       nameVaild = true;
       vaildOrNot(0, nameVaild);
     } else {
@@ -810,12 +852,6 @@ function changeProjectImg(imgSrc) {
     });
   });
 }
-
-/*
-  if (el.id == "not available") {
-    console.log("here");
-  }
-*/
 
 projectCloseBtn.addEventListener("click", () => {
   projectsPopUp.classList.remove("duration-1000");
