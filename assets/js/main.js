@@ -1,8 +1,6 @@
 // ---------------------------------------------------------- Start Catching Elements ---------------------------------- //
 let navbarBtn = document.querySelector("#menu-btn");
 
-console.log(email.value);
-
 let navbarBtnSpan = document.querySelectorAll("#menu-btn span");
 
 let navbarMenuOverlay = document.querySelector("#overlay");
@@ -65,44 +63,42 @@ navbarLinks.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     removeActive(btn, navbarLinks);
-    console.log(btn.childNodes[1].getAttribute("href").slice(1));
   });
 });
 
 function manageScreenWidth(x) {
-  if (x.matches) {
-    document.querySelectorAll(".link-item").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openNavBarMenuAndClosed();
-      });
+  document.querySelectorAll(".link-item").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openNavBarMenuAndClosed();
     });
-    window.addEventListener("scroll", function () {
-      if (contactUs.offsetTop < window.pageYOffset + 180) {
-        rightBarContactUs.className =
-          "absolute w-48 duration-1000 md:h-full  sm:h-[45%] h-[40%] shadow-xl right-0 bg-main top-0 flex items-end justify-center";
-        setTimeout(() => {
-          infoContactUs.className =
-            "bg-neutral-700 max-h-3/4 z-10 text-gray-300 min-h-[200px] relative right-0 md:w-full w-3/4 duration-1000";
-        }, 1000);
-        setTimeout(() => {
-          infoBefore.className =
-            "before:absolute before:w-10 before:h-10 before:bg-main before:top-[-20px] before:left-[-20px] before:scale-100 before:duration-1000";
-          infoParent.className = "md:w-[70%] w-full md:p-10 p-3";
-        }, 2000);
+  });
 
-        setTimeout(() => {
-          document.querySelectorAll(".info-text").forEach((el) => {
-            el.classList.remove("hidden");
-          });
-          document.querySelector(".social-links").classList.remove("hidden");
-          document.querySelector(".social-links").classList.add("flex");
-        }, 2500);
-      }
-    });
-  }
+  window.addEventListener("scroll", function () {
+    if (contactUs.offsetTop < window.pageYOffset + 400) {
+      rightBarContactUs.className =
+        "absolute w-48 duration-1000 md:h-full  sm:h-[45%] h-[40%] shadow-xl right-0 bg-main top-0 flex items-end justify-center";
+      setTimeout(() => {
+        infoContactUs.className =
+          "bg-neutral-700 max-h-3/4 z-10 text-gray-300 min-h-[200px] relative right-0 md:w-full w-3/4 duration-1000";
+      }, 1000);
+      setTimeout(() => {
+        infoBefore.className =
+          "before:absolute before:w-10 before:h-10 before:bg-main before:top-[-20px] before:left-[-20px] before:scale-100 before:duration-1000";
+        infoParent.className = "md:w-[70%] w-full md:p-10 p-3";
+      }, 2000);
+
+      setTimeout(() => {
+        document.querySelectorAll(".info-text").forEach((el) => {
+          el.classList.remove("hidden");
+        });
+        document.querySelector(".social-links").classList.remove("hidden");
+        document.querySelector(".social-links").classList.add("flex");
+      }, 2500);
+    }
+  });
 }
-var x = window.matchMedia("(max-width: 700px)");
+var x = window.matchMedia("(max-width: 900px)");
 manageScreenWidth(x);
 x.addListener(manageScreenWidth);
 // ------------------------------------------------------------ End navbar click listener ------------------------------ //
@@ -594,11 +590,9 @@ function loadItem(arrayOfData) {
 
   function vaildInput(i) {
     if (input[i].value !== "") {
-      console.log("not empty");
       inputPlaceHolder[i].classList.add("active");
       fromUnderLine[i].classList.add("before:w-full");
     } else {
-      console.log("empty");
       inputPlaceHolder[i].classList.remove("active");
       fromUnderLine[i].classList.remove("before:w-full");
     }
@@ -829,7 +823,6 @@ function changeProjectImg(imgSrc) {
       e.stopPropagation();
       removeActiveFromProjectsBtns(el);
       removeActiveFromProjectsBtns(el);
-      console.log(el);
       if (el.id == "largeScreen") {
         projectImg.setAttribute("src", "");
         projectImg.setAttribute(
